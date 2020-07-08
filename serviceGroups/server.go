@@ -9,6 +9,7 @@ import (
 	google_protobuf1 "github.com/golang/protobuf/ptypes/empty"
 	google_protobuf2 "github.com/golang/protobuf/ptypes/wrappers"
 	"net/http"
+	"github.com/SamuelTJackson/fiware-manager/proto"
 )
 
 type Server struct {

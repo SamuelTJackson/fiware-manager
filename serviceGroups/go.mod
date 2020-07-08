@@ -2,14 +2,11 @@ module serviceGroups
 
 go 1.14
 
-replace (
-	github.com/SamuelTJackson/fiware-manager/utils => /home/sam/Documents/private/fiware-manager/utils
-	github.com/SamuelTJackson/fiware-manager/proto => /home/sam/Documents/private/fiware-manager/proto
-)
+replace github.com/SamuelTJackson/fiware-manager/utils => /home/sam/Documents/private/fiware-manager/utils
+
 require (
 	github.com/SamuelTJackson/fiware-manager-api v0.0.0-20200706213338-0ab198ef98ce
 	github.com/SamuelTJackson/fiware-manager/utils v0.0.0-20200708183204-d88aa0d9f03f
-	github.com/SamuelTJackson/fiware-manager/proto latest
 	github.com/golang/protobuf v1.4.2
 	golang.org/x/net v0.0.0-20200707034311-ab3426394381 // indirect
 	google.golang.org/genproto v0.0.0-20200707001353-8e8330bf89df // indirect
