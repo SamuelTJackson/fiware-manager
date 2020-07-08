@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/SamuelTJackson/fiware-manager-api/github.com/SamuelTJackson/fiware-manager-api"
+	"github.com/SamuelTJackson/fiware-manager/proto"
 	"google.golang.org/grpc"
 	"log"
 	"net"
@@ -16,7 +16,7 @@ func main() {
 	}
 	server := &serviceGroups.Server{}
 	grpcServer := grpc.NewServer()
-	fiware_manager_api.RegisterServiceGroupsServiceServer(grpcServer, server)
+	proto.RegisterServiceGroupsServiceServer(grpcServer, server)
 	log.Fatal(grpcServer.Serve(list))
 
 }
