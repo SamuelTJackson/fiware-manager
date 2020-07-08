@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/SamuelTJackson/fiware-manager/proto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+message ServiceGroup {
+	string ApiKey					= 1 	[json_name = "apikey,omitempty"];
+	string EntityType				= 2 	[json_name = "entity_type,omitempty"];
+	string Resource					= 3 	[json_name = "resource,omitempty"];
+	repeated Command Commands			= 4 	[json_name = "commands,omitempty"];
+	repeated Attribute Attributes      		= 5 	[json_name = "attributes,omitempty"];
+	repeated StaticAttribute StaticAttributes	= 6 	[json_name = "static_attributes,omitempty"];
+	repeated Lazy Lazy				= 7 	[json_name = "lazy,omitempty"];
+	string Service					= 8 	[json_name = "service,omitempty"];
+	string Subservice				= 9 	[json_name = "subservice,omitempty"];
+	string ID					= 10	[json_name = "_id,omitempty"];
+}
+message Command {
+	string Name	= 1	[json_name = "name"];
+	string Type	= 2	[json_name = "type"];
+}
+
+message Attribute {
+	string ObjectID		= 1	[json_name = "object_id"];
+	string Name		= 2	[json_name = "name"];
+	string Type		= 3	[json_name = "type"];
+}
+
+message StaticAttribute {
+	string Value	= 1	[json_name = "value"];
+	string Name	= 2	[json_name = "name"];
+	string Type	= 3	[json_name = "type"];
+}
+
+message Lazy{
+	string Name	= 1	[json_name = "name"];
+	string Type	= 2	[json_name = "type"];
+}
+
+service ServiceGroupsService{
+	rpc DeleteServiceGroup(DeleteServiceGroupRequest) returns (google.protobuf.Empty) {};
+	rpc CreateServiceGroup(CreateServiceGroupRequest) returns (google.protobuf.Empty) {};
+	rpc ListServiceGroups(google.protobuf.Empty) returns (ListServiceGroupsResponse) {};
+	rpc UpdateServiceGroup(UpdateServiceGroupRequest) returns (google.protobuf.Empty) {};
+	rpc ServiceGroup(google.protobuf.StringValue) returns (ServiceGroupResponse) {};
+}
+
+message DeleteServiceGroupRequest {
+	ServiceGroup serviceGroup = 1;
+}
+message CreateServiceGroupRequest {
+	ServiceGroup serviceGroup = 1;
+}
+message ListServiceGroupsResponse {
+	repeated ServiceGroup serviceGroup = 1;
+}
+message UpdateServiceGroupRequest {
+	ServiceGroup serviceGroup = 1;
+}
+message ServiceGroupResponse {
+	ServiceGroup serviceGroup = 1;
+}

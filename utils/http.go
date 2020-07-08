@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func createFiwareRequest(ctx context.Context, url string, method string, body []byte) (*http.Request, error){
+func CreateFiwareRequest(ctx context.Context, url string, method string, body []byte) (*http.Request, error){
 	req, err := http.NewRequest(method, url, bytes.NewBuffer(body))
 	if err != nil {
 		return nil, err
