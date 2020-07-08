@@ -1,1 +1,1 @@
-module "utils"
+module "github.com/SamuelTJackson/fiware-manager/utils"
