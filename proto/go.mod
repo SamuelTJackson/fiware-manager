@@ -1,1 +1,1 @@
-module github.com/SamuelTJackson/fiware-manger/proto
+module github.com/SamuelTJackson/fiware-manager/proto
