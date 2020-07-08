@@ -1,1 +1,1 @@
-module github.com/SamuelTJackson/fiware-manager/proto
+module "github.com/SamuelTJackson/fiware-manager/proto"
