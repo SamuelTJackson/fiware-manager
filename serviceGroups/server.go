@@ -2,9 +2,12 @@ package serviceGroups
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 	fiware_manager_api "github.com/SamuelTJackson/fiware-manager-api/github.com/SamuelTJackson/fiware-manager-api"
 	google_protobuf1 "github.com/golang/protobuf/ptypes/empty"
 	google_protobuf2 "github.com/golang/protobuf/ptypes/wrappers"
+	"net/http"
 )
 
 type Server struct {
@@ -25,6 +28,33 @@ func (s *Server) UpdateServiceGroup(ctx context.Context, req *fiware_manager_api
 	return nil, nil
 }
 
-func (s *Server) ServiceGroup(ctx context.Context, req *google_protobuf2.StringValue) (*fiware_manager_api.ServiceGroupResponse, error) {
-	return nil, nil
+func (s *Server) ServiceGroup(ctx context.Context, id *google_protobuf2.StringValue) (*fiware_manager_api.ServiceGroupResponse, error) {
+	url := fmt.Sprintf("http://localhost:4041/iot/services?id=%s", id.Value)
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		return nil, err
+	}
+	if fiwareService, ok := ctx.Value("fiwareservice").(string); ok {
+		req.Header.Set("fiware-service", fiwareService)
+	} else {
+		req.Header.Set("fiware-service", "")
+	}
+	if fiwareServicePath, ok := ctx.Value("fiwareservicePath").(string); ok {
+		req.Header.Set("fiware-servicepath", fiwareServicePath)
+	} else {
+		req.Header.Set("fiware-servicepath","/")
+	}
+	client := http.Client{}
+	response, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer response.Body.Close()
+	serviceGroup :=  &fiware_manager_api.ServiceGroup{}
+	if err := json.NewDecoder(response.Body).Decode(serviceGroup); err != nil {
+		return nil, err
+	}
+
+	return &fiware_manager_api.ServiceGroupResponse{ServiceGroup: serviceGroup}, nil
+
 }
