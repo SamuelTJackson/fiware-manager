@@ -11,16 +11,35 @@ func CreateFiwareRequest(ctx context.Context, url string, method string, body []
 	if err != nil {
 		return nil, err
 	}
-	if fiwareService, ok := ctx.Value("fiwareservice").(string); ok {
+
+	values, ok := ctx.Value("values").(map[string]string)
+	if !ok {
+		req.Header.Set("fiware-servicepath","/")
+		req.Header.Set("fiware-service", "")
+		return req, nil
+	}
+	if fiwareService, ok := values["fiwareservice"]; ok {
 		req.Header.Set("fiware-service", fiwareService)
 	} else {
 		req.Header.Set("fiware-service", "")
 	}
-	if fiwareServicePath, ok := ctx.Value("fiwareservicePath").(string); ok {
+	if fiwareServicePath, ok := values["fiwareservicePath"]; ok {
 		req.Header.Set("fiware-servicepath", fiwareServicePath)
 	} else {
 		req.Header.Set("fiware-servicepath","/")
 	}
 
 	return req, nil
+}
+func CreateContext(request *http.Request) context.Context {
+	fiwareService := request.Header.Get("fiware-service")
+	fiwareServicePath := request.Header.Get("fiware-serviicepath")
+
+	if fiwareServicePath == "" {
+		fiwareServicePath = "/"
+	}
+	return context.WithValue(context.Background(), "values", map[string]string{
+		"fiware-service" : fiwareService,
+		"fiware-servicepath" : fiwareServicePath,
+	})
 }
