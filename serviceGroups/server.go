@@ -14,7 +14,16 @@ import (
 type Server struct {
 }
 
-func (s *Server) DeleteServiceGroup(ctx context.Context, req *proto.DeleteServiceGroupRequest) (*google_protobuf1.Empty, error) {
+func (s *Server) DeleteServiceGroup(ctx context.Context, serviceGroup *proto.DeleteServiceGroupRequest) (*google_protobuf1.Empty, error) {
+	url := fmt.Sprintf("http://localhost:4041/iot/services?resource=%s&apikey=%s", serviceGroup.ServiceGroup.Resource, serviceGroup.ServiceGroup.ApiKey)
+	req, err := utils.CreateFiwareRequest(ctx, url, http.MethodDelete, nil)
+	if err != nil {
+		return nil, err
+	}
+	client := http.Client{}
+	if _, err := client.Do(req); err != nil {
+		return nil, err
+	}
 	return nil, nil
 }
 func (s *Server) CreateServiceGroup(ctx context.Context, req *proto.CreateServiceGroupRequest) (*google_protobuf1.Empty, error) {
@@ -45,7 +54,6 @@ func (s *Server) ServiceGroup(ctx context.Context, id *google_protobuf2.StringVa
 	if err := json.NewDecoder(response.Body).Decode(serviceGroup); err != nil {
 		return nil, err
 	}
-
 	return &proto.ServiceGroupResponse{ServiceGroup: serviceGroup}, nil
 
 }

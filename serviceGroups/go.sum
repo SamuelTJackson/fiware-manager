@@ -1,10 +1,5 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/SamuelTJackson/fiware-manager v0.0.0-20200708190609-5dc817c4f6ba h1:Wc1nFPA+hRcRgU6nMuxWBvDLgSClDsW4UPD7ol6o9VA=
-github.com/SamuelTJackson/fiware-manager-api v0.0.0-20200706213338-0ab198ef98ce h1:s6vQw8R6NuAJqBhwBnecyrqj/hDAxCULeIVCIYmQaGM=
-github.com/SamuelTJackson/fiware-manager-api v0.0.0-20200706213338-0ab198ef98ce/go.mod h1:CDOhKRNX1tCt4uwtTPFGYndyYtOQcvF7kATdyYuiKKo=
-github.com/SamuelTJackson/fiware-manager/utils v0.0.0-20200708183204-d88aa0d9f03f h1:O390vKK7/6WCqLSOjaio+NqQCjvZDCRerTGVjNeXOCw=
-github.com/SamuelTJackson/fiware-manager/utils v0.0.0-20200708183204-d88aa0d9f03f/go.mod h1:QY+M3ni2yxNE/fOEUfCDeYVyxJIqACMuOweobJ9m6xQ=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
 github.com/cncf/udpa/go v0.0.0-20191209042840-269d4d468f6f/go.mod h1:M8M6+tZqaGXZJjfX53e64911xZQV5JYwmTeXPW+k8Sc=
