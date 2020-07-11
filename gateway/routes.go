@@ -1,13 +1,12 @@
-package handler
+package gateway
 
 import (
-	"gateway"
 	"github.com/gorilla/mux"
 	"net/http"
 	"time"
 )
 
-func GetV1Routes(router *mux.Router, app gateway.Application) {
+func GetV1Routes(router *mux.Router, app Application) {
 	router.Handle("/serviceGroups",  appHandler(app.GetServiceGroup)).Methods(http.MethodGet).
 		Queries("id","{id}")
 	router.Handle("/serviceGroups",  appHandler(app.GetServiceGroups)).Methods(http.MethodGet)

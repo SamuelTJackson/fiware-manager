@@ -1,4 +1,4 @@
-package handler
+package gateway
 
 import (
 	"github.com/SamuelTJackson/fiware-manager/proto"
