@@ -3,24 +3,10 @@ package handler
 import (
 	"gateway"
 	"github.com/gorilla/mux"
-	"log"
 	"net/http"
 	"time"
 )
-type appHandler func(http.ResponseWriter, *http.Request) (int, error)
-func (fn appHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	if status, err := fn(w, r); err != nil {
-		log.Printf("HTTP %d: %v", status, err)
-		switch status {
-		case http.StatusNotFound:
-			http.NotFound(w, r)
-		case http.StatusInternalServerError:
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		default:
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-		}
-	}
-}
+
 func GetV1Routes(router *mux.Router, app gateway.Application) {
 	router.Handle("/serviceGroups",  appHandler(app.GetServiceGroup)).Methods(http.MethodGet).
 		Queries("id","{id}")

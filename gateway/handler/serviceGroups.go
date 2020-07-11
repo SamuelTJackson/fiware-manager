@@ -2,7 +2,7 @@ package handler
 
 import (
 	"encoding/json"
-	"github.com/SamuelTJackson/fiware-manager/proto/github.com/SamuelTJackson/fiware-manager/proto"
+	"github.com/SamuelTJackson/fiware-manager/proto"
 	"github.com/SamuelTJackson/fiware-manager/utils"
 	google_protobuf1 "github.com/golang/protobuf/ptypes/empty"
 	google_protobuf2 "github.com/golang/protobuf/ptypes/wrappers"
@@ -53,9 +53,9 @@ func (s Server) CreateServiceGroup(_ http.ResponseWriter, request *http.Request)
 	}
 	_, err := s.serviceGroupsClient.CreateServiceGroup(ctx, &proto.CreateServiceGroupRequest{ServiceGroup: serviceGroup})
 	if err != nil {
-		return http.StatusInternalServerError, err	
+		return http.StatusInternalServerError, err
 	}
-	return http.StatusOK, nil 
+	return http.StatusOK, nil
 }
 
 func (s Server) UpdateServiceGroup(_ http.ResponseWriter, request *http.Request) (int, error) {
@@ -68,7 +68,7 @@ func (s Server) UpdateServiceGroup(_ http.ResponseWriter, request *http.Request)
 	if err != nil {
 		return http.StatusInternalServerError, err
 	}
-	return http.StatusOK, nil 
+	return http.StatusOK, nil
 
 }
 
