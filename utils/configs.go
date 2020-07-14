@@ -1,22 +1,38 @@
 package utils
 
 import (
+	"flag"
 	"github.com/BurntSushi/toml"
 	"io/ioutil"
 	"os"
 )
 
-func GetConfigs(filePath string, config interface{}) error {
-	file, err := os.Open(filePath)
+type Config struct {
+	Gateway Gateway
+	ServiceGroup ServiceGroup
+}
+type ServiceGroup struct {
+	Host string
+	Port int
+}
+type Gateway struct {
+	Port int
+}
+func GetConfigs() (*Config, error){
+	var configurationPath string
+	flag.StringVar(&configurationPath, "config", "./config.toml", "Path for the configuration file.")
+	flag.Parse()
+	file, err := os.Open(configurationPath)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	b, err := ioutil.ReadAll(file)
 	if err != nil {
-		return err
+		return nil, err
 	}
+	config := &Config{}
 	if _, err := toml.Decode(string(b), config); err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return config, nil
 }

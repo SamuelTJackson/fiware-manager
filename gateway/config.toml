@@ -1,0 +1,6 @@
+[gateway]
+port=8081
+
+[servicegroup]
+port=8080
+host="localhost"

@@ -1,0 +1,6 @@
+[general]
+port=8080
+
+[servicegroup]
+port=8080
+host="localhost"

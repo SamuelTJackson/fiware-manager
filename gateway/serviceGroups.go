@@ -12,7 +12,7 @@ import (
 
 func (s Server) GetServiceGroups(writer http.ResponseWriter, request *http.Request) (int, error) {
 	ctx := utils.CreateContext(request)
-	services, err := s.serviceGroupsClient.ListServiceGroups(ctx, &google_protobuf1.Empty{})
+	services, err := s.ServiceGroupsClient.ListServiceGroups(ctx, &google_protobuf1.Empty{})
 	if err != nil {
 		return http.StatusNoContent, err
 	}
@@ -30,7 +30,7 @@ func (s Server) GetServiceGroups(writer http.ResponseWriter, request *http.Reque
 func (s Server) GetServiceGroup(writer http.ResponseWriter, request *http.Request) (int, error) {
 	ctx := utils.CreateContext(request)
 	id := mux.Vars(request)["id"]
-	services, err := s.serviceGroupsClient.ServiceGroup(ctx, &google_protobuf2.StringValue{Value: id} )
+	services, err := s.ServiceGroupsClient.ServiceGroup(ctx, &google_protobuf2.StringValue{Value: id} )
 	if err != nil {
 		return http.StatusNoContent, err
 	}
@@ -51,7 +51,7 @@ func (s Server) CreateServiceGroup(_ http.ResponseWriter, request *http.Request)
 	if err := json.NewDecoder(request.Body).Decode(serviceGroup); err != nil {
 		return http.StatusInternalServerError, err
 	}
-	_, err := s.serviceGroupsClient.CreateServiceGroup(ctx, &proto.CreateServiceGroupRequest{ServiceGroup: serviceGroup})
+	_, err := s.ServiceGroupsClient.CreateServiceGroup(ctx, &proto.CreateServiceGroupRequest{ServiceGroup: serviceGroup})
 	if err != nil {
 		return http.StatusInternalServerError, err
 	}
@@ -64,7 +64,7 @@ func (s Server) UpdateServiceGroup(_ http.ResponseWriter, request *http.Request)
 	if err := json.NewDecoder(request.Body).Decode(group); err != nil {
 		return http.StatusInternalServerError, err
 	}
-	_, err := s.serviceGroupsClient.UpdateServiceGroup(ctx, &proto.UpdateServiceGroupRequest{ServiceGroup: group})
+	_, err := s.ServiceGroupsClient.UpdateServiceGroup(ctx, &proto.UpdateServiceGroupRequest{ServiceGroup: group})
 	if err != nil {
 		return http.StatusInternalServerError, err
 	}
@@ -76,7 +76,7 @@ func (s Server) DeleteServiceGroup(_ http.ResponseWriter, request *http.Request)
 	ctx := utils.CreateContext(request)
 	resource := mux.Vars(request)["resource"]
 	key := mux.Vars(request)["key"]
-	if _, err := s.serviceGroupsClient.DeleteServiceGroup(ctx, &proto.DeleteServiceGroupRequest{ServiceGroup: &proto.ServiceGroup{
+	if _, err := s.ServiceGroupsClient.DeleteServiceGroup(ctx, &proto.DeleteServiceGroupRequest{ServiceGroup: &proto.ServiceGroup{
 		ApiKey:   key,
 		Resource: resource,
 	}}); err != nil {

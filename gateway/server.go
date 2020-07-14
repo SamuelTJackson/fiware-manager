@@ -2,9 +2,11 @@ package gateway
 
 import (
 	"github.com/SamuelTJackson/fiware-manager/proto"
+	"github.com/SamuelTJackson/fiware-manager/utils"
 )
 
 type Server struct {
-	serviceGroupsClient proto.ServiceGroupsServiceClient
+	Config *utils.Config
+	ServiceGroupsClient proto.ServiceGroupsServiceClient
 }
 

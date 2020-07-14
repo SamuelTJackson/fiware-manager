@@ -12,6 +12,7 @@ import (
 )
 
 type Server struct {
+	Config *utils.Config
 }
 
 func (s *Server) DeleteServiceGroup(ctx context.Context, serviceGroup *proto.DeleteServiceGroupRequest) (*google_protobuf1.Empty, error) {

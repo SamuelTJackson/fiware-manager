@@ -1,6 +1,7 @@
 package gateway
 
 import (
+	"fmt"
 	"github.com/gorilla/mux"
 	"net/http"
 	"time"
@@ -46,10 +47,9 @@ func GetReactRoutes(router *mux.Router) {
 	staticHandler := http.StripPrefix("/static/", http.FileServer(http.Dir("./ui/build/static")))
 	router.PathPrefix("/static/").Handler(staticHandler)
 }
-const port = "8080"
-func NewServer(router *mux.Router) *http.Server {
+func NewServer(router *mux.Router, port int) *http.Server {
 	return &http.Server{
-		Addr: "0.0.0.0:" + port,
+		Addr: fmt.Sprintf("0.0.0.0:%d", port),
 		// Good practice to set timeouts to avoid slowloris attacks.
 		WriteTimeout: time.Second * 15,
 		ReadTimeout:  time.Second * 15,
