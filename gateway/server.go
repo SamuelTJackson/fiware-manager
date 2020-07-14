@@ -5,6 +5,6 @@ import (
 )
 
 type Server struct {
-	serviceGroupsClient proto.ServiceGroupsServiceClient
+	ServiceGroupsClient proto.ServiceGroupsServiceClient
 }
 
