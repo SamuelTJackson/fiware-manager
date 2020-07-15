@@ -1,0 +1,14 @@
+[gateway]
+port=8081
+
+[servicegroup]
+port=8080
+host="localhost"
+
+[iotAgents]
+	[iotAgents.json]
+	host="http://localhost"
+	port=4041
+	[iotAgents.ul]
+	host="http://localhost"
+	port=4042

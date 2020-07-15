@@ -16,7 +16,8 @@ type Server struct {
 }
 
 func (s *Server) DeleteServiceGroup(ctx context.Context, serviceGroup *proto.DeleteServiceGroupRequest) (*google_protobuf1.Empty, error) {
-	url := fmt.Sprintf("http://localhost:4041/iot/services?resource=%s&apikey=%s", serviceGroup.ServiceGroup.Resource, serviceGroup.ServiceGroup.ApiKey)
+	url := fmt.Sprintf("%s:%d/iot/services?resource=%s&apikey=%s", s.Config.IotAgents.Json.Host, s.Config.IotAgents.Json.Port,
+		serviceGroup.ServiceGroup.Resource, serviceGroup.ServiceGroup.ApiKey)
 	req, err := utils.CreateFiwareRequest(ctx, url, http.MethodDelete, nil)
 	if err != nil {
 		return nil, err
@@ -40,7 +41,7 @@ func (s *Server) UpdateServiceGroup(ctx context.Context, req *proto.UpdateServic
 }
 
 func (s *Server) ServiceGroup(ctx context.Context, id *google_protobuf2.StringValue) (*proto.ServiceGroupResponse, error) {
-	url := fmt.Sprintf("http://localhost:4041/iot/services?id=%s", id.Value)
+	url := fmt.Sprintf("%s:%d/iot/services?id=%s",s.Config.IotAgents.Json.Host, s.Config.IotAgents.Json.Port, id.Value)
 	req, err := utils.CreateFiwareRequest(ctx, url, http.MethodGet, nil)
 	if err != nil {
 		return nil, err
