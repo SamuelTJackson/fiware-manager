@@ -21,12 +21,19 @@ type Gateway struct {
 }
 
 type IotAgents struct {
-	Json Json
-}
-
-type Json struct {
 	Host string
 	Port int
+	DB DB
+}
+
+type DB struct {
+	Host string
+	Port int
+	User string
+	Password string
+	DB string
+	AuthDB string
+	ReplicaSet string
 }
 func GetConfigs() (*Config, error){
 	var configurationPath string

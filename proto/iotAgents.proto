@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package proto;
+
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+message IotAgent {
+	string Host	= 1 	[json_name = "host,omitempty"];
+	string Port	= 2 	[json_name = "port,omitempty"];
+	string Protocol = 3 	[json_name = "protocol,omitempty"];
+}
+service IotAgentService {
+	rpc AddIotAgent(AddIotAgentRequest) returns (google.protobuf.Empty) {};
+	rpc ListIotAgents(google.protobuf.Empty) returns (ListIotAgentsResponse) {};
+	rpc GetIotAgentWithProtocol(GetIotAgentWithProtocolRequest) returns (GetIotAgentWithProtocolResponse) {};
+}
+
+message AddIotAgentRequest {
+	IotAgent iotAgent = 1;
+}
+message ListIotAgentsResponse {
+	repeated IotAgent iotAgent = 1;
+}
+message GetIotAgentWithProtocolRequest {
+	google.protobuf.StringValue protocol = 1;
+}
+message GetIotAgentWithProtocolResponse {
+	IotAgent iotAgent = 1;
+}

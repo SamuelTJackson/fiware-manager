@@ -6,6 +6,8 @@ port=8080
 host="localhost"
 
 [iotAgents]
+port= 8082
+host="localhost"
 	[iotAgents.json]
 	host="http://localhost"
 	port=4041
