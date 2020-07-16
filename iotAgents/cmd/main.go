@@ -15,12 +15,18 @@ func main()  {
 	if err != nil {
 		panic(err)
 	}
+	db , err := utils.CreateDBConnection(confs.IotAgents.DB)
+	if err != nil {
+		panic(err)
+	}
+
 	list, err := net.Listen("tcp", fmt.Sprintf(":%d", confs.ServiceGroup.Port))
 	if err != nil {
 		panic(err)
 	}
 	server := &iotAgents.Server{
 		Config: confs,
+		Database: db,
 	}
 	grpcServer := grpc.NewServer()
 	proto.RegisterIotAgentServiceServer(grpcServer, server)

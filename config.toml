@@ -8,9 +8,7 @@ host="localhost"
 [iotAgents]
 port= 8082
 host="localhost"
-	[iotAgents.json]
-	host="http://localhost"
-	port=4041
-	[iotAgents.ul]
-	host="http://localhost"
-	port=4042
+	[iotAgents.db]
+	host="localhost"
+	port=5432
+	

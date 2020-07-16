@@ -28,5 +28,5 @@ message GetIotAgentWithProtocolRequest {
 	google.protobuf.StringValue protocol = 1;
 }
 message GetIotAgentWithProtocolResponse {
-	IotAgent iotAgent = 1;
+	repeated IotAgent iotAgent = 1;
 }

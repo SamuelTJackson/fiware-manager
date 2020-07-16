@@ -10,23 +10,27 @@ import (
 	"time"
 )
 
-func CreateDBConnection(db DB) (*mongo.Client, error){
+func CreateDBConnection(db DB) (*mongo.Database, error){
 	clientOptions := options.Client()
 	if len(db.Host) == 0 {
 		return nil, fmt.Errorf("db host is not set")
 	}
-	clientOptions.Hosts = strings.Split(db.Host, ",")
+	clientOptions.SetHosts(strings.Split(db.Host, ","))
+	authOptions := options.Credential{}
 	if len(db.User) != 0 {
-		clientOptions.Auth.Username = db.User
+		authOptions.Username = db.User
 	}
 	if len(db.Password) != 0 {
-		clientOptions.Auth.Password = db.Password
+		authOptions.Password = db.Password
 	}
 	if len(db.ReplicaSet) != 0 {
-		clientOptions.ReplicaSet = &db.ReplicaSet
+		clientOptions.SetReplicaSet(db.ReplicaSet)
 	}
 	if len(db.AuthDB) != 0 {
-		clientOptions.Auth.AuthSource = db.AuthDB
+		authOptions.AuthSource = db.AuthDB
+	}
+	if len(db.Password) != 0 && len(db.User) != 0 {
+		clientOptions.SetAuth(authOptions)
 	}
 	client, err := mongo.NewClient(clientOptions)
 	if err != nil {
@@ -40,5 +44,5 @@ func CreateDBConnection(db DB) (*mongo.Client, error){
 	if err := client.Ping(context.Background(),readpref.Primary()); err != nil {
 		return nil, err
 	}
-	return client, nil
+	return client.Database(db.DB), nil
 }
