@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"context"
 	"fmt"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -21,7 +22,13 @@ func CreateDBConnection(db DB) (*mongo.Client, error){
 	if len(db.Password) != 0 {
 		clientOptions.Auth.Password = db.Password
 	}
-		client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017"))
+	if len(db.ReplicaSet) != 0 {
+		clientOptions.ReplicaSet = &db.ReplicaSet
+	}
+	if len(db.AuthDB) != 0 {
+		clientOptions.Auth.AuthSource = db.AuthDB
+	}
+	client, err := mongo.NewClient(clientOptions)
 	if err != nil {
 		return nil, err
 	}
@@ -33,4 +40,5 @@ func CreateDBConnection(db DB) (*mongo.Client, error){
 	if err := client.Ping(context.Background(),readpref.Primary()); err != nil {
 		return nil, err
 	}
+	return client, nil
 }
