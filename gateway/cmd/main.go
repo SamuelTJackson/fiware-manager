@@ -19,9 +19,15 @@ func main()  {
 	if err != nil {
 		panic(err)
 	}
+	iotAgentConn, err := utils.NewGrpcConn(fmt.Sprintf("%s:%d", confs.IotAgents.Host, confs.IotAgents.Port),
+		"iotAgents")
+	if err != nil {
+		panic(err)
+	}
 	server := gateway.Server{
 		Config: confs,
 		ServiceGroupsClient: proto.NewServiceGroupsServiceClient(serviceGroupConn),
+		IotAgentClient: proto.NewIotAgentServiceClient(iotAgentConn),
 	}
 	router := mux.NewRouter()
 	apiRouter := router.PathPrefix("/v1").Subrouter()

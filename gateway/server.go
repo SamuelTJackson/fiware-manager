@@ -8,5 +8,6 @@ import (
 type Server struct {
 	Config *utils.Config
 	ServiceGroupsClient proto.ServiceGroupsServiceClient
+	IotAgentClient proto.IotAgentServiceClient
 }
 

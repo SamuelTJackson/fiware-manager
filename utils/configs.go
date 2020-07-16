@@ -28,7 +28,6 @@ type IotAgents struct {
 
 type DB struct {
 	Host string
-	Port int
 	User string
 	Password string
 	DB string
