@@ -3,6 +3,7 @@ package utils
 import (
 	"context"
 	"fmt"
+	log "github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
@@ -36,7 +37,8 @@ func CreateDBConnection(db DB) (*mongo.Database, error){
 	if err != nil {
 		return nil, err
 	}
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	ctx, _ := context.WithTimeout(context.Background(), 10 * time.Second)
+
 	if err := client.Connect(ctx); err != nil {
 		return nil, err
 	}
@@ -44,5 +46,6 @@ func CreateDBConnection(db DB) (*mongo.Database, error){
 	if err := client.Ping(context.Background(),readpref.Primary()); err != nil {
 		return nil, err
 	}
+	log.Infof("connected to database %s", db.DB)
 	return client.Database(db.DB), nil
 }
