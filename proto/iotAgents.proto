@@ -9,8 +9,9 @@ import "google/protobuf/wrappers.proto";
 
 message IotAgent {
 	string Host	= 1 	[json_name = "host,omitempty"];
-	string Port	= 2 	[json_name = "port,omitempty"];
-	string Protocol = 3 	[json_name = "protocol,omitempty"];
+	string Protocol = 2	[json_name = "protocol,omitempty"];
+        string Description = 3  [json_name = "description, omitempty"];
+        string Resource = 4     [json_name = "resource, omitempty"];
 }
 service IotAgentService {
 	rpc AddIotAgent(AddIotAgentRequest) returns (google.protobuf.Empty) {};
