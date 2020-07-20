@@ -19,8 +19,11 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	iotAgentConn, err := utils.NewGrpcConn(fmt.Sprintf("%s:%d", confs.IotAgents.Host, confs.IotAgents.Port),
+		"iotAgents")
 	server := &serviceGroups.Server{
 		Config: confs,
+		IotAgentClient: proto.NewIotAgentServiceClient(iotAgentConn),
 	}
 	grpcServer := grpc.NewServer()
 	proto.RegisterServiceGroupsServiceServer(grpcServer, server)

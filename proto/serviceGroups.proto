@@ -6,7 +6,6 @@ package proto;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
-import "google/protobuf/wrappers.proto";
 
 message ServiceGroup {
 	string ApiKey					= 1 	[json_name = "apikey,omitempty"];
@@ -19,6 +18,7 @@ message ServiceGroup {
 	string Service					= 8 	[json_name = "service,omitempty"];
 	string Subservice				= 9 	[json_name = "subservice,omitempty"];
 	string ID					= 10	[json_name = "_id,omitempty"];
+	string Protocol					= 11 	[json_name = "protocol, omitempty"];
 }
 message Command {
 	string Name	= 1	[json_name = "name"];
@@ -47,7 +47,7 @@ service ServiceGroupsService{
 	rpc CreateServiceGroup(CreateServiceGroupRequest) returns (google.protobuf.Empty) {};
 	rpc ListServiceGroups(google.protobuf.Empty) returns (ListServiceGroupsResponse) {};
 	rpc UpdateServiceGroup(UpdateServiceGroupRequest) returns (google.protobuf.Empty) {};
-	rpc ServiceGroup(google.protobuf.StringValue) returns (ServiceGroupResponse) {};
+	rpc ServiceGroup(ServiceGroupRequest) returns (ServiceGroupResponse) {};
 }
 
 message DeleteServiceGroupRequest {
@@ -64,4 +64,8 @@ message UpdateServiceGroupRequest {
 }
 message ServiceGroupResponse {
 	ServiceGroup serviceGroup = 1;
+}
+message ServiceGroupRequest {
+	string Protocol = 1;
+	string ID	= 2;
 }
