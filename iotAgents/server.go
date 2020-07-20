@@ -50,17 +50,10 @@ func (s *Server) ListIotAgents(ctx context.Context,_ *google_protobuf1.Empty) (*
 	return &proto.ListIotAgentsResponse{IotAgent: agents}, nil
 }
 func (s *Server) GetIotAgentWithProtocol(ctx context.Context, req *proto.GetIotAgentWithProtocolRequest) (*proto.GetIotAgentWithProtocolResponse, error) {
-	c, err := s.Database.Collection(collection).Find(context.Background(), bson.D{{"protocol", req.Protocol.GetValue()}})
-	if err != nil {
+	res := s.Database.Collection(collection).FindOne(context.Background(), bson.D{{"protocol", req.GetProtocol()}})
+	var agent *proto.IotAgent
+	if err := res.Decode(agent); err != nil {
 		return nil, err
 	}
-	var agents []*proto.IotAgent
-	for c.Next(context.Background()) {
-		var elem *proto.IotAgent
-		if err := c.Decode(&elem); err != nil {
-			return nil, err
-		}
-		agents = append(agents, elem)
-	}
-	return &proto.GetIotAgentWithProtocolResponse{IotAgent: agents}, nil
+	return &proto.GetIotAgentWithProtocolResponse{IotAgent: agent}, nil
 }
