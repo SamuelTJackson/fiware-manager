@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"sync"
 )
+
 type Server struct {
 	Config *utils.Config
 	IotAgentClient proto.IotAgentServiceClient
