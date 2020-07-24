@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package proto;
+
+//option go_package = "github.com/SamuelTJackson/fiware-manager/proto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+message Attributes {
+  string ObjectId = 1  [json_name = "object_id,omitempty"];
+  string Name = 2       [json_name = "name,omitempty"];
+  string Type = 3       [json_name = "type,omitempty"];
+}
+message Lazy {
+  string ObjectId = 3  [json_name = "object_id,omitempty"];
+  string Name = 1       [json_name = "name,omitempty"];
+  string Type = 2       [json_name = "type,omitempty"];
+}
+message StaticAttributes {
+  string Name = 3       [json_name = "name,omitempty"];
+  string Value = 1      [json_name = "value,omitempty"];
+  string Type = 2       [json_name = "type,omitempty"];
+}
+message Commands {
+   string ObjectId = 3 [json_name = "object_id,omitempty"];
+   string Name = 1      [json_name = "name,omitempty"];
+   string Type = 2      [json_name = "type,omitempty"];
+}
+message IotDevice {
+  string DeviceId = 10  [json_name = "device_id,omitempty"];
+  string Service = 1    [json_name = "service,omitempty"];
+  string ServicePath = 2       [json_name = "service_path,omitempty"];
+  string EntityName = 3        [json_name = "entity_name,omitempty"];
+  string EntityType = 4        [json_name = "entity_type,omitempty"];
+  repeated Attributes attributes = 5    [json_name = "attributes,omitempty"];
+  repeated Lazy lazy = 6        [json_name = "lazy,omitempty"];
+  repeated Commands commands = 7       [json_name = "commands,omitempty"];
+  repeated StaticAttributes static_attributes = 8      [json_name = "static_attributes,omitempty"];
+  string Protocol = 9;
+}
+
+service IotDevicesService {
+	rpc DeleteIotDevice(DeleteIotDeviceRequest) returns (google.protobuf.Empty) {};
+	rpc CreateIotDevice(CreateIotDeviceRequest) returns (google.protobuf.Empty) {};
+	rpc ListIotDevices(google.protobuf.Empty) returns (ListIotDevicesResponse) {};
+	rpc UpdateIotDevice(UpdateIotDeviceRequest) returns (google.protobuf.Empty) {};
+	rpc IotDevice(IotDeviceRequest) returns (IotDeviceResponse) {};
+}
+
+message DeleteIotDeviceRequest{
+	string Id = 1;
+}
+message CreateIotDeviceRequest{
+	IotDevice IotDevice = 1;
+}
+message ListIotDevicesResponse{
+	repeated IotDevice IotDevices = 1;
+}
+message UpdateIotDeviceRequest{
+	IotDevice IotDevice = 1;
+}
+message IotDeviceResponse {
+	IotDevice IotDevice = 1;
+}
+message IotDeviceRequest {
+	string ID	= 1;
+}
