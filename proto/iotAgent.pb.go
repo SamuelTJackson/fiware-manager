@@ -6,6 +6,9 @@ Package proto is a generated protocol buffer package.
 
 It is generated from these files:
 	iotAgent.proto
+	iotDevice.proto
+	serviceGroup.proto
+	values.proto
 
 It has these top-level messages:
 	IotAgent
@@ -13,6 +16,27 @@ It has these top-level messages:
 	ListIotAgentsResponse
 	GetIotAgentWithProtocolRequest
 	GetIotAgentWithProtocolResponse
+	Attributes
+	StaticAttributes
+	Commands
+	IotDevice
+	DeleteIotDeviceRequest
+	CreateIotDeviceRequest
+	ListIotDevicesResponse
+	UpdateIotDeviceRequest
+	IotDeviceResponse
+	IotDeviceRequest
+	ServiceGroup
+	Command
+	Attribute
+	StaticAttribute
+	DeleteServiceGroupRequest
+	CreateServiceGroupRequest
+	ListServiceGroupsResponse
+	UpdateServiceGroupRequest
+	ServiceGroupResponse
+	ServiceGroupRequest
+	Lazy
 */
 package proto
 

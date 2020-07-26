@@ -6,16 +6,12 @@ package proto;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
+import "values.proto";
 
 message Attributes {
   string ObjectId = 1  [json_name = "object_id,omitempty"];
   string Name = 2       [json_name = "name,omitempty"];
   string Type = 3       [json_name = "type,omitempty"];
-}
-message Lazy {
-  string ObjectId = 3  [json_name = "object_id,omitempty"];
-  string Name = 1       [json_name = "name,omitempty"];
-  string Type = 2       [json_name = "type,omitempty"];
 }
 message StaticAttributes {
   string Name = 3       [json_name = "name,omitempty"];

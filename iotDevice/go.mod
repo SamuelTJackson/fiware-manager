@@ -1,8 +1,9 @@
-module serviceGroups
+module iotDevice
 
 go 1.14
 
 replace github.com/SamuelTJackson/fiware-manager/utils => /home/sam/Documents/private/fiware-manager/utils
+
 replace github.com/SamuelTJackson/fiware-manager/proto => /home/sam/Documents/private/fiware-manager/proto
 
 //replace github.com/SamuelTJackson/fiware-manager/utils => /Users/samueltinapp/Documents/private/fiware-manager/utils

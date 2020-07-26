@@ -6,6 +6,7 @@ package proto;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
+import "values.proto";
 
 message ServiceGroup {
 	string ApiKey					= 1 	[json_name = "apikey,omitempty"];
@@ -37,10 +38,6 @@ message StaticAttribute {
 	string Type	= 3	[json_name = "type"];
 }
 
-message Lazy{
-	string Name	= 1	[json_name = "name"];
-	string Type	= 2	[json_name = "type"];
-}
 
 service ServiceGroupsService{
 	rpc DeleteServiceGroup(DeleteServiceGroupRequest) returns (google.protobuf.Empty) {};

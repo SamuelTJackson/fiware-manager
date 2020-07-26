@@ -1,6 +1,7 @@
 .PHONY: iotDevice serviceGroup iotAgent
 
-all: iotDevice serviceGroup iotAgent
+all: 
+	docker run --rm -v $(shell pwd):/data -w /data znly/protoc --go_out=plugins=grpc:. -I=. *.proto
 
 iotDevice:
 	docker run --rm -v $(shell pwd):/data -w /data znly/protoc --go_out=plugins=grpc:. -I=. iotDevice.proto
