@@ -72,8 +72,6 @@ func StartIotServer(port int) {
 		case http.MethodDelete:
 			fmt.Println("Delete")
 		}
-
 	})
 	http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
-
 }

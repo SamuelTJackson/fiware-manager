@@ -46,6 +46,7 @@ service IotDevicesService {
 
 message DeleteIotDeviceRequest{
 	string Id = 1;
+        string Protocol = 2;
 }
 message CreateIotDeviceRequest{
 	IotDevice IotDevice = 1;
@@ -61,4 +62,5 @@ message IotDeviceResponse {
 }
 message IotDeviceRequest {
 	string ID	= 1;
+        string Protocol = 2;
 }
