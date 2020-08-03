@@ -22,7 +22,7 @@ type Lazy struct {
 func (m *Lazy) Reset()                    { *m = Lazy{} }
 func (m *Lazy) String() string            { return proto1.CompactTextString(m) }
 func (*Lazy) ProtoMessage()               {}
-func (*Lazy) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
+func (*Lazy) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{0} }
 
 func (m *Lazy) GetName() string {
 	if m != nil {
@@ -42,9 +42,9 @@ func init() {
 	proto1.RegisterType((*Lazy)(nil), "proto.Lazy")
 }
 
-func init() { proto1.RegisterFile("values.proto", fileDescriptor3) }
+func init() { proto1.RegisterFile("values.proto", fileDescriptor4) }
 
-var fileDescriptor3 = []byte{
+var fileDescriptor4 = []byte{
 	// 130 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x29, 0x4b, 0xcc, 0x29,
 	0x4d, 0x2d, 0xd6, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x05, 0x53, 0x52, 0x32, 0xe9, 0xf9,

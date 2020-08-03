@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package proto;
+
+
+import "google/protobuf/empty.proto";
+
+message User {
+        string UserID           = 1 	[json_name = "id,omitempty"];
+        string KeyrockToken     = 2     [json_name = "keyrock_token"];
+        string Email            = 3     [json_name = "email"];
+        string Username         = 4     [json_name = "username"];
+        string LoraKey          = 5     [json_name = "lora_key"];
+}
+
+service UserService {
+	rpc GetUser(GetUserRequest) returns (GetUserResponse) {};
+	rpc AddUser(AddUserRequest) returns (google.protobuf.Empty) {};
+	rpc RemoveUser(RemoveUserRequest) returns (google.protobuf.Empty) {};
+	rpc AddLorakey(AddLorakeyRequest) returns (google.protobuf.Empty) {};
+	rpc RemoveLorakey(RemoveLorakeyRequest) returns (google.protobuf.Empty) {};
+	rpc GetLorakey(GetLorakeyRequest) returns (GetLorakeyResponse) {};
+}
+
+message GetUserRequest {
+	string UserID = 1;
+}
+message GetUserResponse {
+	User User = 1;
+}
+message AddUserRequest {
+	User User = 1;
+}
+message RemoveUserRequest {
+        string UserID = 1;
+}
+message AddLorakeyRequest {
+        string Key = 1;
+        string UserID = 2;
+}
+message RemoveLorakeyRequest {
+        string Key = 1;
+        string UserID = 2;
+}
+message GetLorakeyRequest {
+        string UserID = 1;
+}
+message GetLorakeyResponse {
+        string UserID = 1;
+}

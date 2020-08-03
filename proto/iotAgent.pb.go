@@ -8,6 +8,7 @@ It is generated from these files:
 	iotAgent.proto
 	iotDevice.proto
 	serviceGroup.proto
+	user.proto
 	values.proto
 
 It has these top-level messages:
@@ -36,6 +37,15 @@ It has these top-level messages:
 	UpdateServiceGroupRequest
 	ServiceGroupResponse
 	ServiceGroupRequest
+	User
+	GetUserRequest
+	GetUserResponse
+	AddUserRequest
+	RemoveUserRequest
+	AddLorakeyRequest
+	RemoveLorakeyRequest
+	GetLorakeyRequest
+	GetLorakeyResponse
 	Lazy
 */
 package proto
