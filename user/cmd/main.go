@@ -15,15 +15,20 @@ func main()  {
 	if err != nil {
 		panic(err)
 	}
+	db , err := utils.CreateDBConnection(confs.User.DB)
+	if err != nil {
+		panic(err)
+	}
 	list, err := net.Listen("tcp", fmt.Sprintf(":%d", confs.User.Port))
 	if err != nil {
 		panic(err)
 	}
 	server := &user.Server{
 		Config: confs,
+		Database: db,
 	}
 	grpcServer := grpc.NewServer()
 	proto.RegisterUserServiceServer(grpcServer, server)
-	fmt.Printf("listen on %d\n", confs.IotDevice.Port)
+	fmt.Printf("listen on %d\n", confs.User.Port)
 	log.Fatal(grpcServer.Serve(list))
 }

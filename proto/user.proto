@@ -57,5 +57,5 @@ message GetLorakeyRequest {
         string UserID = 1;
 }
 message GetLorakeyResponse {
-        string UserID = 1;
+        string Lorakey = 1;
 }
