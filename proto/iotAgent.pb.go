@@ -38,6 +38,9 @@ It has these top-level messages:
 	ServiceGroupResponse
 	ServiceGroupRequest
 	User
+	LoginUserRequest
+	LoginUserResponse
+	LogoutUserRequest
 	GetUserRequest
 	GetUserResponse
 	AddUserRequest

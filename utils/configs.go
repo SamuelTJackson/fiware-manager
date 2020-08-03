@@ -12,6 +12,12 @@ type Config struct {
 	ServiceGroup ServiceGroup
 	IotAgents IotAgents
 	IotDevice IotDevice
+	User User
+}
+type User struct {
+	Host string
+	Port int
+	DB DB
 }
 type ServiceGroup struct {
 	Host string

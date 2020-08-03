@@ -20,8 +20,19 @@ service UserService {
 	rpc AddLorakey(AddLorakeyRequest) returns (google.protobuf.Empty) {};
 	rpc RemoveLorakey(RemoveLorakeyRequest) returns (google.protobuf.Empty) {};
 	rpc GetLorakey(GetLorakeyRequest) returns (GetLorakeyResponse) {};
+        rpc LoginUser(LoginUserRequest) returns (LoginUserResponse) {};
+        rpc LogoutUser(LogoutUserRequest) returns (google.protobuf.Empty) {};
 }
-
+message LoginUserRequest {
+        string Email = 1;
+        string Password = 2;
+}
+message LoginUserResponse {
+        string Jwt = 1;
+}
+message LogoutUserRequest {
+        string Jwt = 2;
+}
 message GetUserRequest {
 	string UserID = 1;
 }
