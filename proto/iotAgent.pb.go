@@ -76,10 +76,14 @@ var _ = math.Inf
 const _ = proto1.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type IotAgent struct {
-	Host        string `protobuf:"bytes,1,opt,name=Host,json=host,omitempty" json:"Host,omitempty"`
-	Protocol    string `protobuf:"bytes,2,opt,name=Protocol,json=protocol,omitempty" json:"Protocol,omitempty"`
-	Description string `protobuf:"bytes,3,opt,name=Description,json=description, omitempty" json:"Description,omitempty"`
-	Resource    string `protobuf:"bytes,4,opt,name=Resource,json=resource, omitempty" json:"Resource,omitempty"`
+	// @inject_tag: json:"host,omitempty" bson:"host"
+	Host string `protobuf:"bytes,1,opt,name=Host,json=host,omitempty" json:"host,omitempty" bson:"host"`
+	// @inject_tag: json:"protocol,omitempty" bson:"protocol"
+	Protocol string `protobuf:"bytes,2,opt,name=Protocol,json=protocol,omitempty" json:"protocol,omitempty" bson:"protocol"`
+	// @inject_tag: json:"description,omitempty" bson:"description"
+	Description string `protobuf:"bytes,3,opt,name=Description,json=description, omitempty" json:"description,omitempty" bson:"description"`
+	// @inject_tag: json:"resource,omitempty" bson:"resource"
+	Resource string `protobuf:"bytes,4,opt,name=Resource,json=resource, omitempty" json:"resource,omitempty" bson:"resource"`
 }
 
 func (m *IotAgent) Reset()                    { *m = IotAgent{} }

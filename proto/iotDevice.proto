@@ -9,30 +9,49 @@ import "google/protobuf/empty.proto";
 import "values.proto";
 
 message Attributes {
+  // @inject_tag: json:"object_id,omitempty" bson:"object_id"
   string ObjectId = 1  [json_name = "object_id,omitempty"];
+  // @inject_tag: json:"name,omitempty" bson:"name"
   string Name = 2       [json_name = "name,omitempty"];
+  // @inject_tag: json:"type,omitempty" bson:"type"
   string Type = 3       [json_name = "type,omitempty"];
 }
 message StaticAttributes {
+  // @inject_tag: json:"name,omitempty" bson:"name"
   string Name = 3       [json_name = "name,omitempty"];
+  // @inject_tag: json:"value,omitempty" bson:"value"
   string Value = 1      [json_name = "value,omitempty"];
+  // @inject_tag: json:"type,omitempty" bson:"type"
   string Type = 2       [json_name = "type,omitempty"];
 }
 message Commands {
+  // @inject_tag: json:"object_id,omitempty" bson:"object_id"
    string ObjectId = 3 [json_name = "object_id,omitempty"];
+   // @inject_tag: json:"name,omitempty" bson:"name"
    string Name = 1      [json_name = "name,omitempty"];
+   // @inject_tag: json:"type,omitempty" bson:"type"
    string Type = 2      [json_name = "type,omitempty"];
 }
 message IotDevice {
+  // @inject_tag: json:"device_id,omitempty" bson:"device_id"
   string DeviceId = 10  [json_name = "device_id,omitempty"];
+  // @inject_tag: json:"service,omitempty" bson:"service"
   string Service = 1    [json_name = "service,omitempty"];
+  // @inject_tag: json:"service_path,omitempty" bson:"service_path"
   string ServicePath = 2       [json_name = "service_path,omitempty"];
+  // @inject_tag: json:"entity_name,omitempty" bson:"entity_name"
   string EntityName = 3        [json_name = "entity_name,omitempty"];
+  // @inject_tag: json:"entity_type,omitempty" bson:"entity_type"
   string EntityType = 4        [json_name = "entity_type,omitempty"];
+  // @inject_tag: json:"attributes,omitempty" bson:"attributes"
   repeated Attributes attributes = 5    [json_name = "attributes,omitempty"];
+  // @inject_tag: json:"lazy,omitempty" bson:"lazy"
   repeated Lazy lazy = 6        [json_name = "lazy,omitempty"];
+  // @inject_tag: json:"commands,omitempty" bson:"commands"
   repeated Commands commands = 7       [json_name = "commands,omitempty"];
+  // @inject_tag: json:"static_attributes,omitempty" bson:"static_attributes"
   repeated StaticAttributes static_attributes = 8      [json_name = "static_attributes,omitempty"];
+  // @inject_tag: json:"protocol,omitempty" bson:"protocol"
   string Protocol = 9;
 }
 

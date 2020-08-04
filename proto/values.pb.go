@@ -15,8 +15,10 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 type Lazy struct {
-	Name string `protobuf:"bytes,1,opt,name=Name,json=name" json:"Name,omitempty"`
-	Type string `protobuf:"bytes,2,opt,name=Type,json=type" json:"Type,omitempty"`
+	// @inject_tag: json:"name,omitempty" bson:"name"
+	Name string `protobuf:"bytes,1,opt,name=Name,json=name" json:"name,omitempty" bson:"name"`
+	// @inject_tag: json:"type,omitempty" bson:"type"
+	Type string `protobuf:"bytes,2,opt,name=Type,json=type" json:"type,omitempty" bson:"type"`
 }
 
 func (m *Lazy) Reset()                    { *m = Lazy{} }

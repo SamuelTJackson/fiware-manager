@@ -7,9 +7,13 @@ import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
 message IotAgent {
+        // @inject_tag: json:"host,omitempty" bson:"host"
 	string Host	= 1 	[json_name = "host,omitempty"];
+        // @inject_tag: json:"protocol,omitempty" bson:"protocol"
 	string Protocol = 2	[json_name = "protocol,omitempty"];
+        // @inject_tag: json:"description,omitempty" bson:"description"
         string Description = 3  [json_name = "description, omitempty"];
+        // @inject_tag: json:"resource,omitempty" bson:"resource"
         string Resource = 4     [json_name = "resource, omitempty"];
 }
 service IotAgentService {

@@ -7,6 +7,8 @@ import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
 message Lazy{
+        // @inject_tag: json:"name,omitempty" bson:"name"
 	string Name	= 1	[json_name = "name"];
+        // @inject_tag: json:"type,omitempty" bson:"type"
 	string Type	= 2	[json_name = "type"];
 }

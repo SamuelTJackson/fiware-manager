@@ -6,10 +6,15 @@ package proto;
 import "google/protobuf/empty.proto";
 
 message User {
+        // @inject_tag: json:"id,omitempty" bson:"id"
         string UserID           = 1 	[json_name = "id,omitempty"];
+        // @inject_tag: json:"keyrock_token,omitempty" bson:"keyrock_token"
         string KeyrockToken     = 2     [json_name = "keyrock_token"];
+        // @inject_tag: json:"email,omitempty" bson:"email"
         string Email            = 3     [json_name = "email"];
+        // @inject_tag: json:"username,omitempty" bson:"username"
         string Username         = 4     [json_name = "username"];
+        // @inject_tag: json:"lora_key,omitempty" bson:"lora_key"
         string LoraKey          = 5     [json_name = "lora_key"];
 }
 
@@ -24,7 +29,9 @@ service UserService {
         rpc LogoutUser(LogoutUserRequest) returns (google.protobuf.Empty) {};
 }
 message LoginUserRequest {
+        // @inject_tag: json:"email,omitempty" bson:"email"
         string Email = 1        [json_name = "email,omitempty"];
+        // @inject_tag: json:"password,omitempty" bson:"password"
         string Password = 2     [json_name = "password,omitempty"];
 }
 message LoginUserResponse {

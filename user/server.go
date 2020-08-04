@@ -78,26 +78,22 @@ func (s *Server) GetLorakey(ctx context.Context, req *proto.GetLorakeyRequest) (
 	}, nil
 }
 func (s *Server) LoginUser(ctx context.Context, req *proto.LoginUserRequest) (*proto.LoginUserResponse, error){
-	type login struct {
-		Email    string `json:"email"`
-		Password string `json:"password"`
-	}
-	var loginCredentials login
-	if err := json.NewDecoder(request.Body).Decode(&loginCredentials); err != nil {
-		return http.StatusInternalServerError, err
-	}
 	client, err := keyrock.NewClient(&keyrock.Options{
-		BaseURL:  "https://keyrock.solvita.eng-its.de",
-		Email:    loginCredentials.Email,
-		Password: loginCredentials.Password,
+		BaseURL: s.Config.Keyrock.Host,
+		Email:   req.GetEmail(),
+		Password: req.GetPassword(),
 	})
 	if err != nil {
-		return http.StatusInternalServerError, err
+		return nil, err
 	}
 	if err := client.GetTokenWithPassword(); err != nil {
-		return http.StatusInternalServerError, err
+		return nil, err
 	}
 	info, err := client.GetTokenInfo()
+	if err != nil {
+		return nil, err
+	}
+	return &proto.LoginUserResponse{Jwt: info.AccessToken}, nil
 
 }
 func (s *Server) LogoutUser(ctx context.Context, req *proto.LogoutUserRequest) (*google_protobuf1.Empty, error){

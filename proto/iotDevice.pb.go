@@ -20,9 +20,12 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 type Attributes struct {
-	ObjectId string `protobuf:"bytes,1,opt,name=ObjectId,json=object_id,omitempty" json:"ObjectId,omitempty"`
-	Name     string `protobuf:"bytes,2,opt,name=Name,json=name,omitempty" json:"Name,omitempty"`
-	Type     string `protobuf:"bytes,3,opt,name=Type,json=type,omitempty" json:"Type,omitempty"`
+	// @inject_tag: json:"object_id,omitempty" bson:"object_id"
+	ObjectId string `protobuf:"bytes,1,opt,name=ObjectId,json=object_id,omitempty" json:"object_id,omitempty" bson:"object_id"`
+	// @inject_tag: json:"name,omitempty" bson:"name"
+	Name string `protobuf:"bytes,2,opt,name=Name,json=name,omitempty" json:"name,omitempty" bson:"name"`
+	// @inject_tag: json:"type,omitempty" bson:"type"
+	Type string `protobuf:"bytes,3,opt,name=Type,json=type,omitempty" json:"type,omitempty" bson:"type"`
 }
 
 func (m *Attributes) Reset()                    { *m = Attributes{} }
@@ -52,9 +55,12 @@ func (m *Attributes) GetType() string {
 }
 
 type StaticAttributes struct {
-	Name  string `protobuf:"bytes,3,opt,name=Name,json=name,omitempty" json:"Name,omitempty"`
-	Value string `protobuf:"bytes,1,opt,name=Value,json=value,omitempty" json:"Value,omitempty"`
-	Type  string `protobuf:"bytes,2,opt,name=Type,json=type,omitempty" json:"Type,omitempty"`
+	// @inject_tag: json:"name,omitempty" bson:"name"
+	Name string `protobuf:"bytes,3,opt,name=Name,json=name,omitempty" json:"name,omitempty" bson:"name"`
+	// @inject_tag: json:"value,omitempty" bson:"value"
+	Value string `protobuf:"bytes,1,opt,name=Value,json=value,omitempty" json:"value,omitempty" bson:"value"`
+	// @inject_tag: json:"type,omitempty" bson:"type"
+	Type string `protobuf:"bytes,2,opt,name=Type,json=type,omitempty" json:"type,omitempty" bson:"type"`
 }
 
 func (m *StaticAttributes) Reset()                    { *m = StaticAttributes{} }
@@ -84,9 +90,12 @@ func (m *StaticAttributes) GetType() string {
 }
 
 type Commands struct {
-	ObjectId string `protobuf:"bytes,3,opt,name=ObjectId,json=object_id,omitempty" json:"ObjectId,omitempty"`
-	Name     string `protobuf:"bytes,1,opt,name=Name,json=name,omitempty" json:"Name,omitempty"`
-	Type     string `protobuf:"bytes,2,opt,name=Type,json=type,omitempty" json:"Type,omitempty"`
+	// @inject_tag: json:"object_id,omitempty" bson:"object_id"
+	ObjectId string `protobuf:"bytes,3,opt,name=ObjectId,json=object_id,omitempty" json:"object_id,omitempty" bson:"object_id"`
+	// @inject_tag: json:"name,omitempty" bson:"name"
+	Name string `protobuf:"bytes,1,opt,name=Name,json=name,omitempty" json:"name,omitempty" bson:"name"`
+	// @inject_tag: json:"type,omitempty" bson:"type"
+	Type string `protobuf:"bytes,2,opt,name=Type,json=type,omitempty" json:"type,omitempty" bson:"type"`
 }
 
 func (m *Commands) Reset()                    { *m = Commands{} }
@@ -116,16 +125,26 @@ func (m *Commands) GetType() string {
 }
 
 type IotDevice struct {
-	DeviceId         string              `protobuf:"bytes,10,opt,name=DeviceId,json=device_id,omitempty" json:"DeviceId,omitempty"`
-	Service          string              `protobuf:"bytes,1,opt,name=Service,json=service,omitempty" json:"Service,omitempty"`
-	ServicePath      string              `protobuf:"bytes,2,opt,name=ServicePath,json=service_path,omitempty" json:"ServicePath,omitempty"`
-	EntityName       string              `protobuf:"bytes,3,opt,name=EntityName,json=entity_name,omitempty" json:"EntityName,omitempty"`
-	EntityType       string              `protobuf:"bytes,4,opt,name=EntityType,json=entity_type,omitempty" json:"EntityType,omitempty"`
-	Attributes       []*Attributes       `protobuf:"bytes,5,rep,name=attributes,json=attributes,omitempty" json:"attributes,omitempty"`
-	Lazy             []*Lazy             `protobuf:"bytes,6,rep,name=lazy,json=lazy,omitempty" json:"lazy,omitempty"`
-	Commands         []*Commands         `protobuf:"bytes,7,rep,name=commands,json=commands,omitempty" json:"commands,omitempty"`
-	StaticAttributes []*StaticAttributes `protobuf:"bytes,8,rep,name=static_attributes,json=static_attributes,omitempty" json:"static_attributes,omitempty"`
-	Protocol         string              `protobuf:"bytes,9,opt,name=Protocol" json:"Protocol,omitempty"`
+	// @inject_tag: json:"device_id,omitempty" bson:"device_id"
+	DeviceId string `protobuf:"bytes,10,opt,name=DeviceId,json=device_id,omitempty" json:"device_id,omitempty" bson:"device_id"`
+	// @inject_tag: json:"service,omitempty" bson:"service"
+	Service string `protobuf:"bytes,1,opt,name=Service,json=service,omitempty" json:"service,omitempty" bson:"service"`
+	// @inject_tag: json:"service_path,omitempty" bson:"service_path"
+	ServicePath string `protobuf:"bytes,2,opt,name=ServicePath,json=service_path,omitempty" json:"service_path,omitempty" bson:"service_path"`
+	// @inject_tag: json:"entity_name,omitempty" bson:"entity_name"
+	EntityName string `protobuf:"bytes,3,opt,name=EntityName,json=entity_name,omitempty" json:"entity_name,omitempty" bson:"entity_name"`
+	// @inject_tag: json:"entity_type,omitempty" bson:"entity_type"
+	EntityType string `protobuf:"bytes,4,opt,name=EntityType,json=entity_type,omitempty" json:"entity_type,omitempty" bson:"entity_type"`
+	// @inject_tag: json:"attributes,omitempty" bson:"attributes"
+	Attributes []*Attributes `protobuf:"bytes,5,rep,name=attributes,json=attributes,omitempty" json:"attributes,omitempty" bson:"attributes"`
+	// @inject_tag: json:"lazy,omitempty" bson:"lazy"
+	Lazy []*Lazy `protobuf:"bytes,6,rep,name=lazy,json=lazy,omitempty" json:"lazy,omitempty" bson:"lazy"`
+	// @inject_tag: json:"commands,omitempty" bson:"commands"
+	Commands []*Commands `protobuf:"bytes,7,rep,name=commands,json=commands,omitempty" json:"commands,omitempty" bson:"commands"`
+	// @inject_tag: json:"static_attributes,omitempty" bson:"static_attributes"
+	StaticAttributes []*StaticAttributes `protobuf:"bytes,8,rep,name=static_attributes,json=static_attributes,omitempty" json:"static_attributes,omitempty" bson:"static_attributes"`
+	// @inject_tag: json:"protocol,omitempty" bson:"protocol"
+	Protocol string `protobuf:"bytes,9,opt,name=Protocol" json:"protocol,omitempty" bson:"protocol"`
 }
 
 func (m *IotDevice) Reset()                    { *m = IotDevice{} }

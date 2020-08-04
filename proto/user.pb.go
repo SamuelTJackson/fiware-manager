@@ -19,11 +19,16 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 type User struct {
-	UserID       string `protobuf:"bytes,1,opt,name=UserID,json=id,omitempty" json:"UserID,omitempty"`
-	KeyrockToken string `protobuf:"bytes,2,opt,name=KeyrockToken,json=keyrock_token" json:"KeyrockToken,omitempty"`
-	Email        string `protobuf:"bytes,3,opt,name=Email,json=email" json:"Email,omitempty"`
-	Username     string `protobuf:"bytes,4,opt,name=Username,json=username" json:"Username,omitempty"`
-	LoraKey      string `protobuf:"bytes,5,opt,name=LoraKey,json=lora_key" json:"LoraKey,omitempty"`
+	// @inject_tag: json:"id,omitempty" bson:"id"
+	UserID string `protobuf:"bytes,1,opt,name=UserID,json=id,omitempty" json:"id,omitempty" bson:"id"`
+	// @inject_tag: json:"keyrock_token,omitempty" bson:"keyrock_token"
+	KeyrockToken string `protobuf:"bytes,2,opt,name=KeyrockToken,json=keyrock_token" json:"keyrock_token,omitempty" bson:"keyrock_token"`
+	// @inject_tag: json:"email,omitempty" bson:"email"
+	Email string `protobuf:"bytes,3,opt,name=Email,json=email" json:"email,omitempty" bson:"email"`
+	// @inject_tag: json:"username,omitempty" bson:"username"
+	Username string `protobuf:"bytes,4,opt,name=Username,json=username" json:"username,omitempty" bson:"username"`
+	// @inject_tag: json:"lora_key,omitempty" bson:"lora_key"
+	LoraKey string `protobuf:"bytes,5,opt,name=LoraKey,json=lora_key" json:"lora_key,omitempty" bson:"lora_key"`
 }
 
 func (m *User) Reset()                    { *m = User{} }
@@ -67,8 +72,10 @@ func (m *User) GetLoraKey() string {
 }
 
 type LoginUserRequest struct {
-	Email    string `protobuf:"bytes,1,opt,name=Email,json=email,omitempty" json:"Email,omitempty"`
-	Password string `protobuf:"bytes,2,opt,name=Password,json=password,omitempty" json:"Password,omitempty"`
+	// @inject_tag: json:"email,omitempty" bson:"email"
+	Email string `protobuf:"bytes,1,opt,name=Email,json=email,omitempty" json:"email,omitempty" bson:"email"`
+	// @inject_tag: json:"password,omitempty" bson:"password"
+	Password string `protobuf:"bytes,2,opt,name=Password,json=password,omitempty" json:"password,omitempty" bson:"password"`
 }
 
 func (m *LoginUserRequest) Reset()                    { *m = LoginUserRequest{} }
