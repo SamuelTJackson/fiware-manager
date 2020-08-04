@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+	"encoding/json"
 	"github.com/SamuelTJackson/fiware-manager/proto"
 	"github.com/SamuelTJackson/fiware-manager/utils"
 	"github.com/SamuelTJackson/keyrock"
@@ -9,6 +10,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
+	"net/http"
 )
 
 type Server struct {
@@ -76,6 +78,26 @@ func (s *Server) GetLorakey(ctx context.Context, req *proto.GetLorakeyRequest) (
 	}, nil
 }
 func (s *Server) LoginUser(ctx context.Context, req *proto.LoginUserRequest) (*proto.LoginUserResponse, error){
+	type login struct {
+		Email    string `json:"email"`
+		Password string `json:"password"`
+	}
+	var loginCredentials login
+	if err := json.NewDecoder(request.Body).Decode(&loginCredentials); err != nil {
+		return http.StatusInternalServerError, err
+	}
+	client, err := keyrock.NewClient(&keyrock.Options{
+		BaseURL:  "https://keyrock.solvita.eng-its.de",
+		Email:    loginCredentials.Email,
+		Password: loginCredentials.Password,
+	})
+	if err != nil {
+		return http.StatusInternalServerError, err
+	}
+	if err := client.GetTokenWithPassword(); err != nil {
+		return http.StatusInternalServerError, err
+	}
+	info, err := client.GetTokenInfo()
 
 }
 func (s *Server) LogoutUser(ctx context.Context, req *proto.LogoutUserRequest) (*google_protobuf1.Empty, error){

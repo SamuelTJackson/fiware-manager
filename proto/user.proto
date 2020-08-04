@@ -24,8 +24,8 @@ service UserService {
         rpc LogoutUser(LogoutUserRequest) returns (google.protobuf.Empty) {};
 }
 message LoginUserRequest {
-        string Email = 1;
-        string Password = 2;
+        string Email = 1        [json_name = "email,omitempty"];
+        string Password = 2     [json_name = "password,omitempty"];
 }
 message LoginUserResponse {
         string Jwt = 1;

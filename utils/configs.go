@@ -13,6 +13,10 @@ type Config struct {
 	IotAgents IotAgents
 	IotDevice IotDevice
 	User User
+	Keyrock Keyrock
+}
+type Keyrock struct {
+	Host string
 }
 type User struct {
 	Host string

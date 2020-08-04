@@ -20,3 +20,6 @@ host="localhost"
 	host="localhost"
 	port=5432
 	db="user"
+[keyrock]
+host="https://keyrock.solvita.eng-its.de"
+

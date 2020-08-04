@@ -3,38 +3,56 @@ syntax = "proto3";
 package proto;
 
 //option go_package = "github.com/SamuelTJackson/fiware-manager/proto";
-
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 import "values.proto";
 
 message ServiceGroup {
-	string ApiKey					= 1 	[json_name = "apikey,omitempty"];
+        // @inject_tag: json:"api_key,omitempty" bson:"api_key"
+	string ApiKey					= 1 	[json_name = "api_key,omitempty"];
+        // @inject_tag: json:"entity_type,omitempty" bson:"entity_type"
 	string EntityType				= 2 	[json_name = "entity_type,omitempty"];
+        // @inject_tag: json:"resource,omitempty" bson:"resource"
 	string Resource					= 3 	[json_name = "resource,omitempty"];
+        // @inject_tag: json:"commands,omitempty" bson:"commands"
 	repeated Command Commands			= 4 	[json_name = "commands,omitempty"];
+        // @inject_tag: json:"attributes,omitempty" bson:"attributes"
 	repeated Attribute Attributes      		= 5 	[json_name = "attributes,omitempty"];
+        // @inject_tag: json:"static_attributes,omitempty" bson:"static_attributes"
 	repeated StaticAttribute StaticAttributes	= 6 	[json_name = "static_attributes,omitempty"];
+        // @inject_tag: json:"lazy,omitempty" bson:"lazy"
 	repeated Lazy Lazy				= 7 	[json_name = "lazy,omitempty"];
+        // @inject_tag: json:"service,omitempty" bson:"service"
 	string Service					= 8 	[json_name = "service,omitempty"];
+        // @inject_tag: json:"subservice,omitempty" bson:"subservice"
 	string Subservice				= 9 	[json_name = "subservice,omitempty"];
+        // @inject_tag: json:"_id,omitempty" bson:"_id"
 	string ID					= 10	[json_name = "_id,omitempty"];
+        // @inject_tag: json:"protocol,omitempty" bson:"protocol"
 	string Protocol					= 11 	[json_name = "protocol, omitempty"];
 }
 message Command {
+        // @inject_tag: json:"name,omitempty" bson:"name"
 	string Name	= 1	[json_name = "name"];
+              // @inject_tag: json:"type,omitempty" bson:"type"
 	string Type	= 2	[json_name = "type"];
 }
 
 message Attribute {
+        // @inject_tag: json:"object_id,omitempty" bson:"object_id"
 	string ObjectID		= 1	[json_name = "object_id"];
+        // @inject_tag: json:"name,omitempty" bson:"name"
 	string Name		= 2	[json_name = "name"];
+        // @inject_tag: json:"type,omitempty" bson:"type"
 	string Type		= 3	[json_name = "type"];
 }
 
 message StaticAttribute {
+        // @inject_tag: json:"value,omitempty" bson:"value"
 	string Value	= 1	[json_name = "value"];
+        // @inject_tag: json:"name,omitempty" bson:"name"
 	string Name	= 2	[json_name = "name"];
+        // @inject_tag: json:"type,omitempty" bson:"type"
 	string Type	= 3	[json_name = "type"];
 }
 
