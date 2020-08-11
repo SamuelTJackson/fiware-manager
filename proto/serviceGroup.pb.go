@@ -47,7 +47,7 @@ type ServiceGroup struct {
 func (m *ServiceGroup) Reset()                    { *m = ServiceGroup{} }
 func (m *ServiceGroup) String() string            { return proto1.CompactTextString(m) }
 func (*ServiceGroup) ProtoMessage()               {}
-func (*ServiceGroup) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
+func (*ServiceGroup) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
 
 func (m *ServiceGroup) GetApiKey() string {
 	if m != nil {
@@ -136,7 +136,7 @@ type Command struct {
 func (m *Command) Reset()                    { *m = Command{} }
 func (m *Command) String() string            { return proto1.CompactTextString(m) }
 func (*Command) ProtoMessage()               {}
-func (*Command) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
+func (*Command) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{1} }
 
 func (m *Command) GetName() string {
 	if m != nil {
@@ -164,7 +164,7 @@ type Attribute struct {
 func (m *Attribute) Reset()                    { *m = Attribute{} }
 func (m *Attribute) String() string            { return proto1.CompactTextString(m) }
 func (*Attribute) ProtoMessage()               {}
-func (*Attribute) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
+func (*Attribute) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{2} }
 
 func (m *Attribute) GetObjectID() string {
 	if m != nil {
@@ -199,7 +199,7 @@ type StaticAttribute struct {
 func (m *StaticAttribute) Reset()                    { *m = StaticAttribute{} }
 func (m *StaticAttribute) String() string            { return proto1.CompactTextString(m) }
 func (*StaticAttribute) ProtoMessage()               {}
-func (*StaticAttribute) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
+func (*StaticAttribute) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{3} }
 
 func (m *StaticAttribute) GetValue() string {
 	if m != nil {
@@ -229,7 +229,7 @@ type DeleteServiceGroupRequest struct {
 func (m *DeleteServiceGroupRequest) Reset()                    { *m = DeleteServiceGroupRequest{} }
 func (m *DeleteServiceGroupRequest) String() string            { return proto1.CompactTextString(m) }
 func (*DeleteServiceGroupRequest) ProtoMessage()               {}
-func (*DeleteServiceGroupRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{4} }
+func (*DeleteServiceGroupRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{4} }
 
 func (m *DeleteServiceGroupRequest) GetServiceGroup() *ServiceGroup {
 	if m != nil {
@@ -245,7 +245,7 @@ type CreateServiceGroupRequest struct {
 func (m *CreateServiceGroupRequest) Reset()                    { *m = CreateServiceGroupRequest{} }
 func (m *CreateServiceGroupRequest) String() string            { return proto1.CompactTextString(m) }
 func (*CreateServiceGroupRequest) ProtoMessage()               {}
-func (*CreateServiceGroupRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{5} }
+func (*CreateServiceGroupRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{5} }
 
 func (m *CreateServiceGroupRequest) GetServiceGroup() *ServiceGroup {
 	if m != nil {
@@ -261,7 +261,7 @@ type ListServiceGroupsResponse struct {
 func (m *ListServiceGroupsResponse) Reset()                    { *m = ListServiceGroupsResponse{} }
 func (m *ListServiceGroupsResponse) String() string            { return proto1.CompactTextString(m) }
 func (*ListServiceGroupsResponse) ProtoMessage()               {}
-func (*ListServiceGroupsResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{6} }
+func (*ListServiceGroupsResponse) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{6} }
 
 func (m *ListServiceGroupsResponse) GetServiceGroup() []*ServiceGroup {
 	if m != nil {
@@ -277,7 +277,7 @@ type UpdateServiceGroupRequest struct {
 func (m *UpdateServiceGroupRequest) Reset()                    { *m = UpdateServiceGroupRequest{} }
 func (m *UpdateServiceGroupRequest) String() string            { return proto1.CompactTextString(m) }
 func (*UpdateServiceGroupRequest) ProtoMessage()               {}
-func (*UpdateServiceGroupRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{7} }
+func (*UpdateServiceGroupRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{7} }
 
 func (m *UpdateServiceGroupRequest) GetServiceGroup() *ServiceGroup {
 	if m != nil {
@@ -293,7 +293,7 @@ type ServiceGroupResponse struct {
 func (m *ServiceGroupResponse) Reset()                    { *m = ServiceGroupResponse{} }
 func (m *ServiceGroupResponse) String() string            { return proto1.CompactTextString(m) }
 func (*ServiceGroupResponse) ProtoMessage()               {}
-func (*ServiceGroupResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{8} }
+func (*ServiceGroupResponse) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{8} }
 
 func (m *ServiceGroupResponse) GetServiceGroup() *ServiceGroup {
 	if m != nil {
@@ -310,7 +310,7 @@ type ServiceGroupRequest struct {
 func (m *ServiceGroupRequest) Reset()                    { *m = ServiceGroupRequest{} }
 func (m *ServiceGroupRequest) String() string            { return proto1.CompactTextString(m) }
 func (*ServiceGroupRequest) ProtoMessage()               {}
-func (*ServiceGroupRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{9} }
+func (*ServiceGroupRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{9} }
 
 func (m *ServiceGroupRequest) GetProtocol() string {
 	if m != nil {
@@ -543,9 +543,9 @@ var _ServiceGroupsService_serviceDesc = grpc.ServiceDesc{
 	Metadata: "serviceGroup.proto",
 }
 
-func init() { proto1.RegisterFile("serviceGroup.proto", fileDescriptor2) }
+func init() { proto1.RegisterFile("serviceGroup.proto", fileDescriptor3) }
 
-var fileDescriptor2 = []byte{
+var fileDescriptor3 = []byte{
 	// 601 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x95, 0x41, 0x6f, 0xda, 0x4c,
 	0x10, 0x86, 0xbf, 0x60, 0x48, 0x60, 0xc8, 0x97, 0x26, 0x1b, 0x1a, 0x39, 0xa6, 0x07, 0x8a, 0x5a,

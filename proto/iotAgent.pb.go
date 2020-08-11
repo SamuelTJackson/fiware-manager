@@ -7,6 +7,7 @@ Package proto is a generated protocol buffer package.
 It is generated from these files:
 	iotAgent.proto
 	iotDevice.proto
+	jwtManager.proto
 	serviceGroup.proto
 	user.proto
 	values.proto
@@ -27,6 +28,8 @@ It has these top-level messages:
 	UpdateIotDeviceRequest
 	IotDeviceResponse
 	IotDeviceRequest
+	GenerateJWTRequest
+	GenerateJWTResponse
 	ServiceGroup
 	Command
 	Attribute

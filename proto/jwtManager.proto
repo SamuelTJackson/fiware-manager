@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package de.fiwareManager;
+option java_multiple_files = true;
+
+import "google/protobuf/timestamp.proto";
+
+
+service JWTManagerService {
+	rpc GenerateJWT(GenerateJWTRequest) returns (GenerateJWTResponse) {};
+}
+message GenerateJWTRequest{
+        string UserID = 1;
+        string Role = 2;
+        google.protobuf.Timestamp TokenDuration = 3;
+}
+message GenerateJWTResponse {
+  string JWT = 1;
+}
