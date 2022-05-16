@@ -14,7 +14,7 @@
     "leaflet": "^1.6.0",
     "lodash": "^4.17.15",
     "material-ui": "^0.20.2",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "notistack": "^0.9.16",
     "pigeon-maps": "^0.15.0",
     "pigeon-marker": "^0.3.4",
