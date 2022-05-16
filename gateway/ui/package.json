@@ -9,7 +9,7 @@
     "@material-ui/lab": "^4.0.0-alpha.54",
     "@nuxtjs/axios": "^5.10.3",
     "axios": "^0.21.1",
-    "cross-fetch": "^3.0.5",
+    "cross-fetch": "^3.1.5",
     "express": "^4.17.1",
     "leaflet": "^1.6.0",
     "lodash": "^4.17.15",
